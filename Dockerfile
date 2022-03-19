@@ -10,6 +10,6 @@ ENV HOME=/${WORKDIR} \
     HOST=0.0.0.0 \
     API_URL=${API_URL}
 
-RUN npm install && npm cache clean --force
+# RUN npm install && npm cache clean --force
 
 WORKDIR ${HOME}
