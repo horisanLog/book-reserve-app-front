@@ -38,7 +38,7 @@ export const TodoForm: React.FC<Props> = memo(({ todo, changeTodo }: Props) => {
 
   const onSubmit: SubmitHandler<{ title: string }> = useCallback((data) => {console.log(data)},[]);
 
-  console.log("test")
+  console.log("react hook formなしの時に表示される")
 
   return (
     <>
@@ -49,7 +49,7 @@ export const TodoForm: React.FC<Props> = memo(({ todo, changeTodo }: Props) => {
           render={({ field }) => (
             <TextField
               {...field}
-              label="テキストフィールド"
+              label="react hook formあり"
               error={errors.title ? true : false}
               helperText={errors.title?.message}
               fullWidth
@@ -58,9 +58,7 @@ export const TodoForm: React.FC<Props> = memo(({ todo, changeTodo }: Props) => {
             />
           )}
         />
-        <input onChange={(e) => setTest(e.target.value)}></input>
-        <br />
-        {test}
+        <input placeholder="react hook formなし" onChange={(e) => setTest(e.target.value)}></input>
         <br />
         <input type="submit" />
       </form>
