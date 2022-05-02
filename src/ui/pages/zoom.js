@@ -153,33 +153,33 @@ const MoveableElemet = (props) => {
             target.style.transform = transform;
             let deltaX = dist[0];
             let deltaY = dist[1];
-            if (privateProps.rotate === 90) {
-              deltaX = dist[1] * -1;
-              deltaY = dist[0];
-            } else if (privateProps.rotate === 180) {
-              deltaX = dist[0] * -1;
-              deltaY = dist[1] * -1;
-            } else if (privateProps.rotate === 270) {
-              deltaX = dist[1];
-              deltaY = dist[0] * -1;
-            }
+            // if (privateProps.rotate === 90) {
+            //   deltaX = dist[1] * -1;
+            //   deltaY = dist[0];
+            // } else if (privateProps.rotate === 180) {
+            //   deltaX = dist[0] * -1;
+            //   deltaY = dist[1] * -1;
+            // } else if (privateProps.rotate === 270) {
+            //   deltaX = dist[1];
+            //   deltaY = dist[0] * -1;
+            // }
             setTempProps({ left: deltaX, top: deltaY });
           }}
-          onDragEnd={({ target, isDrag, clientX, clientY }) => {
-            // console.log("onDragEnd", target, isDrag, clientX, clientY);
-            setPrivateProps({
-              ...privateProps,
-              left:
-                tempProps.left !== undefined
-                  ? privateProps.left + tempProps.left
-                  : privateProps.left,
-              top:
-                tempProps.top !== undefined
-                  ? privateProps.top + tempProps.top
-                  : privateProps.top,
-            });
-            setTempProps({});
-          }}
+          // onDragEnd={({ target, isDrag, clientX, clientY }) => {
+          //   // console.log("onDragEnd", target, isDrag, clientX, clientY);
+          //   setPrivateProps({
+          //     ...privateProps,
+          //     left:
+          //       tempProps.left !== undefined
+          //         ? privateProps.left + tempProps.left
+          //         : privateProps.left,
+          //     top:
+          //       tempProps.top !== undefined
+          //         ? privateProps.top + tempProps.top
+          //         : privateProps.top,
+          //   });
+          //   setTempProps({});
+          // }}
           onResizeStart={({ target, clientX, clientY }) => {
             // console.log("onResizeStart", target);
           }}
@@ -290,13 +290,6 @@ export const Zoom = () => {
   ]);
   const [isMoveable, setIsMoveable] = useState(false);
 
-  const onAddMore = () => {
-    const newTarget = { ...targetTemplate };
-    newTarget.id = shortid.generate();
-    newTarget.name = `${newTarget.name}`;
-    setTargets([...targets, newTarget]);
-  };
-
   const toggleMoveable = () => {
     setIsMoveable(!isMoveable);
   };
@@ -371,9 +364,6 @@ export const Zoom = () => {
             >
               x
             </button>
-            {/* <button style={{ marginLeft: "10px" }} onClick={() => onAddMore()}>
-              Add More
-            </button> */}
             <button
               style={{ marginLeft: "10px" }}
               onClick={() => toggleMoveable()}
@@ -407,7 +397,6 @@ export const Zoom = () => {
               ))}
             </div>
             <div
-              id="canvas"
               width="600"
               height="400"
               onMouseDown={(e) =>
