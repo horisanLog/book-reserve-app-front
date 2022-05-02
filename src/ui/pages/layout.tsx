@@ -47,9 +47,7 @@ export const LayoutPage: React.FC = memo(() => {
     }
   };
 
-  // useEffect(() => {
-  //   serCoordinate(mouseEvent.coordinate)
-  // }, [mouseEvent]);
+  useEffect(() => {}, []);
 
   const tableCreate = async (e: React.FormEvent) => {
     setDisable(true);
@@ -62,7 +60,6 @@ export const LayoutPage: React.FC = memo(() => {
   return (
     <>
       <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-
         <img src={seat01} alt="ライオンの画像" width="1000" height="500"></img>
       </MapContainer>
       {isDisable && (
