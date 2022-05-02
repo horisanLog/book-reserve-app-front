@@ -124,7 +124,7 @@ const MoveableElemet = (props) => {
           throttleResize={throttles.resize}
           throttleRotate={throttles.rotate}
           bounds={bounds}
-          renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
+          // renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
           edge={false}
           zoom={1}
           origin={false}
@@ -248,18 +248,6 @@ const MoveableElemet = (props) => {
   );
 };
 
-const targetTemplate = {
-  classSelector: "targets",
-  name: "Target",
-  width: 100,
-  height: 100,
-  top: 100,
-  left: 100,
-  rotate: 0,
-  backgroundColor:
-    "repeating-linear-gradient(45deg,#95d46f,#95d46f 10px,#d4d1d1 10px,#d4d1d1 20px)",
-  fontColor: "white",
-};
 
 export const Zoom = () => {
   const [targets, setTargets] = useState([
@@ -306,7 +294,9 @@ export const Zoom = () => {
     setTargets([...targets.slice(0, index), ...targets.slice(index + 1)]);
   };
 
-  // 以下は追加
+
+
+  /////////////////////////////////// ここから以下はMoveableを使用していない関数
   const [coordinate, serCoordinate] = useState({ X: 30, Y: 30 });
 
   // ドラッグし始めた(MouseDownした)時のマウス座標 MouseDown時に保存し、MouseUp時にnullを入れてリセット
@@ -381,9 +371,9 @@ export const Zoom = () => {
                   "repeating-linear-gradient(0deg, rgba(120, 120, 120, 0.2), rgba(120, 120, 120, 0.22) 2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 240px), repeating-linear-gradient(-90deg, rgba(120, 120, 120, 0.22), rgba(120, 120, 120, 0.22) 2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 240px), repeating-linear-gradient(0deg, rgba(120, 120, 120, 0.22), rgba(120, 120, 120, 0.22) 2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 60px), repeating-linear-gradient(-90deg, rgba(120, 120, 120, 0.22), rgba(120, 120, 120, 0.22) 2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 60px)",
                 top: 0,
                 left: 0,
-                userDrag: "none",
-                webkitUserDrag: "none",
-                mozUserSelect: "none",
+                // userDrag: "none",
+                // webkitUserDrag: "none",
+                // mozUserSelect: "none",
               }}
             >
               {targets.map((target) => (
