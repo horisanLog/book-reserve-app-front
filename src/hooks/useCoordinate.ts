@@ -42,6 +42,7 @@ export const useCoordinate = () => {
 
       // 座標のstyle
       style: {
+        zIndex: 1000,
         transform: `translate3d(${coordinate.X}px, ${coordinate.Y}px, 0)`,
       },
     },

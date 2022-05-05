@@ -9,8 +9,14 @@ import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
+import seat01 from "../../seat01.png";
 
 import { useCoordinate } from "../../hooks/useCoordinate";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import Leaflet from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+Leaflet.Icon.Default.imagePath = seat01;
 
 // 方眼紙の背景のCSS
 const styles = {
@@ -23,7 +29,7 @@ const styles = {
   height: "500px",
 };
 
-export const TopPage: React.FC = memo(() => {
+export const LayoutPage: React.FC = memo(() => {
   const { loading, todo, changeTodo } = useTodo();
   const [wSquare, setWSquare] = useState<number>(0);
   const [hSquare, setHSquare] = useState<number>(0);
@@ -41,9 +47,7 @@ export const TopPage: React.FC = memo(() => {
     }
   };
 
-  // useEffect(() => {
-  //   serCoordinate(mouseEvent.coordinate)
-  // }, [mouseEvent]);
+  useEffect(() => {}, []);
 
   const tableCreate = async (e: React.FormEvent) => {
     setDisable(true);
@@ -55,39 +59,41 @@ export const TopPage: React.FC = memo(() => {
 
   return (
     <>
-      <Box sx={styles}>
-        {isDisable && (
-          <div {...mouseEvent.data}>
-            <div
-              style={{
-                height: 30 * hSquare,
-                width: 30 * wSquare,
-                background: "#a3c6f9",
-                position: "absolute",
-                zIndex: 1300,
-                boxSizing: "border-box",
-              }}
-            >
-              <Radio
-                sx={{ width: "30px", height: "30px", zIndex: 1300 }}
-                size="small"
-              />
-              <Radio
-                sx={{ width: "30px", height: "30px", zIndex: 1300 }}
-                size="small"
-              />
-              <Radio
-                sx={{ width: "30px", height: "30px", zIndex: 1300 }}
-                size="small"
-              />
-              <Radio
-                sx={{ width: "30px", height: "30px", zIndex: 1300 }}
-                size="small"
-              />
-            </div>
+      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+        <img src={seat01} alt="ライオンの画像" width="1000" height="500"></img>
+      </MapContainer>
+      {isDisable && (
+        <div {...mouseEvent.data}>
+          <div
+            style={{
+              height: 30 * hSquare,
+              width: 30 * wSquare,
+              background: "#a3c6f9",
+              position: "absolute",
+              zIndex: 1300,
+              boxSizing: "border-box",
+            }}
+          >
+            <Radio
+              sx={{ width: "30px", height: "30px", zIndex: 1300 }}
+              size="small"
+            />
+            <Radio
+              sx={{ width: "30px", height: "30px", zIndex: 1300 }}
+              size="small"
+            />
+            <Radio
+              sx={{ width: "30px", height: "30px", zIndex: 1300 }}
+              size="small"
+            />
+            <Radio
+              sx={{ width: "30px", height: "30px", zIndex: 1300 }}
+              size="small"
+            />
           </div>
-        )}
-      </Box>
+        </div>
+      )}
+
       <Grid item container sm={12} xs={12}>
         <Grid item sm={1} xs={12}>
           <InputLabel>横</InputLabel>

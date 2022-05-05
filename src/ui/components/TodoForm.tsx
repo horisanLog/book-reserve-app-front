@@ -1,5 +1,5 @@
 import { memo, useState, useCallback } from "react";
-import { Todo } from "../../../domain/todo";
+import { Todo } from "../../domain/todo";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField, FormControl, FormControlLabel } from "@mui/material";
