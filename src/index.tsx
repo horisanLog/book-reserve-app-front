@@ -3,15 +3,17 @@ import ReactDOM from "react-dom";
 import { Routing } from "./router";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <CssBaseline />
     <BrowserRouter>
       <Routing />
     </BrowserRouter>
-  </React.StrictMode>,
+  </>,
+  // </React.StrictMode>
   document.getElementById("root")
 );
 
