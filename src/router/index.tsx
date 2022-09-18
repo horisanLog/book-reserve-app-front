@@ -5,6 +5,8 @@ import { SchedulePage } from '../ui/pages/schedule'
 import { LayoutPage } from '../ui/pages/layout'
 import { ImageMapPage } from '../ui/pages/imageMap'
 import { Zoom } from '../ui/pages/zoom'
+import { ApiTestPage } from '../ui/pages/apiTest'
+
 
 export const Routing: VFC = memo(() => (
   <Routes>
@@ -13,5 +15,6 @@ export const Routing: VFC = memo(() => (
     <Route path="/layout" element={<LayoutPage />} />
     <Route path="/image-map" element={<ImageMapPage />} />
     <Route path="/zoom" element={<Zoom />} />
+    <Route path="/swr" element={<ApiTestPage />} />
   </Routes>
 ))
